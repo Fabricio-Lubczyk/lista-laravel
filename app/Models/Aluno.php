@@ -14,6 +14,7 @@ class Aluno extends Model
         'nome',
         'email',
         'curso_id',
+        'user_id',
     ];
 
     public function scopeDoCurso($query, string $curso)
@@ -41,5 +42,10 @@ class Aluno extends Model
     public function curso(): BelongsTo
     {
         return $this->belongsTo(Curso::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
