@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início</title>
-</head>
-<body>
-    <h1>Lista Laravel</h1>
-    <p>Bem-vindo ao projeto de atividades Laravel.</p>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title', 'Início')
+
+@section('content')
+    <h2>Bem-vindo</h2>
+    <p>Bem-vindo ao sistema de alunos.</p>
+@endsection
