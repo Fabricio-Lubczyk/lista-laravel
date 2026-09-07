@@ -2,42 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
     public function index()
     {
-        return 'Lista de alunos';
+        $alunos = Aluno::all();
+
+        return view('alunos.index', compact('alunos'));
     }
 
-    public function show(string $id)
+    public function show(Aluno $aluno)
     {
-        return "Aluno: {$id}";
+        return view('alunos.show', compact('aluno'));
     }
 
     public function create()
     {
-        return 'Formulário de cadastro de aluno';
+        return view('alunos.create');
     }
 
     public function store(Request $request)
     {
-        return 'Aluno cadastrado';
+        $aluno = Aluno::create($request->only(['nome', 'email', 'curso']));
+
+        return redirect()->route('alunos.show', $aluno);
     }
 
-    public function edit(string $id)
+    public function edit(Aluno $aluno)
     {
-        return "Editar aluno: {$id}";
+        return view('alunos.show', compact('aluno'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Aluno $aluno)
     {
-        return "Aluno {$id} atualizado";
+        $aluno->update($request->only(['nome', 'email', 'curso']));
+
+        return redirect()->route('alunos.show', $aluno);
     }
 
-    public function destroy(string $id)
+    public function destroy(Aluno $aluno)
     {
-        return "Aluno {$id} excluído";
+        $aluno->delete();
+
+        return redirect()->route('alunos.index');
     }
 }
