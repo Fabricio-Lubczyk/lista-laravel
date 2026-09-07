@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início - Lista Laravel</title>
+    <title>Detalhes do aluno</title>
 </head>
 <body>
-    <h1>Lista Laravel</h1>
-    <p>Bem-vindo ao sistema de alunos.</p>
+    <h1>Detalhes do aluno</h1>
+    <p>As informações do aluno serão exibidas aqui.</p>
 </body>
 </html>
