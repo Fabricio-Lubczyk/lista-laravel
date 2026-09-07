@@ -4,17 +4,17 @@ use App\Http\Controllers\AlunoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/sobre', function () {
-    return 'Página sobre o projeto';
+    return view('sobre');
 });
 
 Route::resource('alunos', AlunoController::class);
 
 Route::get('/contato', function () {
-    return 'Entre em contato conosco';
+    return view('contato');
 });
 
 Route::get('/produto/{id}', function (string $id) {
