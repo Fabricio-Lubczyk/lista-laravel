@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
-</head>
-<body>
-    <h1>Contato</h1>
+@extends('layouts.app')
+
+@section('title', 'Contato')
+
+@section('content')
+    <h2>Contato</h2>
     <p>Entre em contato pelo formulário do projeto.</p>
-</body>
-</html>
+@endsection

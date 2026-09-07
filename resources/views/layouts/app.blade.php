@@ -8,6 +8,7 @@
 <body>
     <header>
         <h1>Lista Laravel</h1>
+        @include('partials.menu')
     </header>
 
     <main>

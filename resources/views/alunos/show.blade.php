@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do aluno</title>
-</head>
-<body>
-    <h1>Detalhes do aluno</h1>
-    <p>As informações do aluno serão exibidas aqui.</p>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title', 'Detalhes do aluno')
+
+@section('content')
+    <h2>Detalhes do aluno</h2>
+
+    @if(isset($aluno))
+        <p>Nome: {{ $aluno->nome }}</p>
+    @else
+        <p>Aluno não encontrado.</p>
+    @endif
+@endsection
