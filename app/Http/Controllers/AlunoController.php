@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AlunoRequest;
 use App\Models\Aluno;
+use App\Models\Curso;
 
 class AlunoController extends Controller
 {
@@ -21,12 +22,14 @@ class AlunoController extends Controller
 
     public function create()
     {
-        return view('alunos.create');
+        $cursos = Curso::all();
+
+        return view('alunos.create', compact('cursos'));
     }
 
     public function store(AlunoRequest $request)
     {
-        $aluno = Aluno::create($request->only(['nome', 'email', 'curso']));
+        $aluno = Aluno::create($request->only(['nome', 'email', 'curso_id']));
 
         return redirect()->route('alunos.show', $aluno);
     }
@@ -38,7 +41,7 @@ class AlunoController extends Controller
 
     public function update(AlunoRequest $request, Aluno $aluno)
     {
-        $aluno->update($request->only(['nome', 'email', 'curso']));
+        $aluno->update($request->only(['nome', 'email', 'curso_id']));
 
         return redirect()->route('alunos.show', $aluno);
     }
