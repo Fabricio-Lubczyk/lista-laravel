@@ -14,4 +14,24 @@ class Aluno extends Model
         'email',
         'curso',
     ];
+
+    public function scopeDoCurso($query, string $curso)
+    {
+        return $query->where('curso', $curso);
+    }
+
+    public function scopeNomeContendo($query, string $palavra)
+    {
+        return $query->where('nome', 'like', "%{$palavra}%");
+    }
+
+    public function scopeRecentes($query, int $dias = 30)
+    {
+        return $query->where('created_at', '>=', now()->subDays($dias));
+    }
+
+    public static function quantidade(): int
+    {
+        return static::query()->count();
+    }
 }
