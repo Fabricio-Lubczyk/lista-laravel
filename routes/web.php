@@ -28,3 +28,11 @@ Route::get('/categoria/{id}', function (string $id) {
 Route::get('/usuario/{id}', function (string $id) {
     return "Usuário: {$id}";
 });
+
+Route::middleware('role:admin')->get('/admin', function () {
+    return 'Área do administrador';
+});
+
+Route::middleware('role:professor')->get('/professor', function () {
+    return 'Área do professor';
+});
