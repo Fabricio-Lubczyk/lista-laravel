@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Aluno extends Model
 {
@@ -12,12 +13,14 @@ class Aluno extends Model
     protected $fillable = [
         'nome',
         'email',
-        'curso',
+        'curso_id',
     ];
 
     public function scopeDoCurso($query, string $curso)
     {
-        return $query->where('curso', $curso);
+        return $query->whereHas('curso', function ($consulta) use ($curso) {
+            $consulta->where('nome', $curso);
+        });
     }
 
     public function scopeNomeContendo($query, string $palavra)
@@ -33,5 +36,10 @@ class Aluno extends Model
     public static function quantidade(): int
     {
         return static::query()->count();
+    }
+
+    public function curso(): BelongsTo
+    {
+        return $this->belongsTo(Curso::class);
     }
 }

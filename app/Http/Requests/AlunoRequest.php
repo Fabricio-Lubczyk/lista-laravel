@@ -16,7 +16,7 @@ class AlunoRequest extends FormRequest
         return [
             'nome' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'curso' => ['required', 'string', 'max:255'],
+            'curso_id' => ['required', 'integer', 'exists:cursos,id'],
         ];
     }
 }
